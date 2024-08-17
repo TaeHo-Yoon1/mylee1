@@ -16,11 +16,11 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Character Slot Machine')
 
 # Load images for different facial features and resize them
-hair_images = [pygame.transform.scale(pygame.image.load(f'images/hair_{i}.png'), (800, 430)) for i in range(1, 6)]
-eyes_images = [pygame.transform.scale(pygame.image.load(f'images/eyes_{i}.png'), (820, 400)) for i in range(1, 6)]
+hair_images = [pygame.transform.scale(pygame.image.load(f'images/hair_{i}.png'), (668, 375)) for i in range(1, 6)]
+eyes_images = [pygame.transform.scale(pygame.image.load(f'images/eyes_{i}.png'), (730, 370)) for i in range(1, 6)]
 nose_images = [pygame.transform.scale(pygame.image.load(f'images/nose_{i}.png'), (600, 420)) for i in range(1, 6)]
-mouth_images = [pygame.transform.scale(pygame.image.load(f'images/mouth_{i}.png'), (960, 480)) for i in range(1, 6)]
-background_image = pygame.transform.scale(pygame.image.load(f'background_images/base.png'), (800, 500))
+mouth_images = [pygame.transform.scale(pygame.image.load(f'images/mouth_{i}.png'), (960, 500)) for i in range(1, 6)]
+background_image = pygame.transform.scale(pygame.image.load(f'background_images/base.png'), (685, 364))
 
 # Current rolling indices (for the slot machine effect)
 rolling_hair = random.randint(0, len(hair_images) - 1)
@@ -89,10 +89,10 @@ def complete_draw_face(hair_pos=(SCREEN_WIDTH // 2, 50), eye_pos=(SCREEN_WIDTH /
     screen.blit(background_image, background_pos)
 
     # Adjust positions based on background image position
-    hair_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] + 21)
-    eye_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] + 45)
-    nose_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] + 45)
-    mouth_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] + 10)
+    hair_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1])
+    eye_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] - 6)
+    nose_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] - 25)
+    mouth_pos = (background_pos[0] + background_image.get_width() // 2, background_pos[1] - 75)
 
     # Draw hair
     screen.blit(hair_images[rolling_hair], (hair_pos[0] - hair_images[rolling_hair].get_width() // 2, hair_pos[1]))
